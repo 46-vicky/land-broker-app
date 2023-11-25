@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { authReducer } from '../stores/authSlice';
 
-const Nav = ({isLogin,setIsLogin}) => {
+const Nav = ({isLogin}) => {
+  const dispatch = useDispatch()
   const logoutUser = ()=>{
-      localStorage.removeItem("login-status");
-      setIsLogin(false)
+    dispatch(authReducer.logoutUser())
   }
   return (
-    <div className='login-link'>
+    <div className='auth-part'>
       {isLogin ? <p onClick={()=>logoutUser()} className='logut-link'>Logout</p> : <p><Link to="login">Login</Link></p>}
     </div>
   )

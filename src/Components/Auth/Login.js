@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { authReducer } from '../../stores/authSlice';
+import { useSelector } from 'react-redux';
+import { loggedUserDetail } from '../../stores/authSlice';
 
 const Login = () => {
     const userRef = useRef();
@@ -8,11 +12,13 @@ const Login = () => {
     const [showPass,setShowPass] = useState(false)
     const [InvalidAuth,setInValidAuth] = useState(false)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    const logInDetail = useSelector(loggedUserDetail)
+    const status =  logInDetail.isLoggedIn;
 
     useEffect(()=>{
         userRef.current.focus();
-        const status =  JSON.parse(localStorage.getItem("login-status"));
         if(status){
          navigate("/")
         }
@@ -24,9 +30,8 @@ const Login = () => {
 
      
     const submitForm = ()=>{
-        if(userName === password && userName !== "" && password !== ""){
-            console.log("username and password is same")
-            localStorage.setItem("login-status",JSON.stringify("true"));
+        if(userName === password && userName.trim() !== "" && password.trim() !== ""){
+            dispatch(authReducer.loginUser({isLoggedIn : true,userName: userName.trim()}));
             navigate("/")
         } else{
             setInValidAuth(true);
