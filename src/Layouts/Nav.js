@@ -1,12 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Nav = () => {
+const Nav = ({isLogin,setIsLogin}) => {
+  const logoutUser = ()=>{
+      localStorage.removeItem("login-status");
+      setIsLogin(false)
+  }
   return (
-    <div>
-        <ul>
-            <li><Link to="login">Login</Link></li>
-        </ul>
+    <div className='login-link'>
+      {isLogin ? <p onClick={()=>logoutUser()} className='logut-link'>Logout</p> : <p><Link to="login">Login</Link></p>}
     </div>
   )
 }
