@@ -163,7 +163,7 @@ body {
 }
 .lm-head h1{
   font-size: 28px;
-  padding:20px 10px 20px 40px;
+  padding:20px 10px 40px 50px;
   position:relative;
   display: block;
   margin: 0px auto;
@@ -175,9 +175,8 @@ body {
   position: absolute;
   width: 40px;
   height:40px;
-  top: 50%;
-  left:0;
-  transform: translateY(-50%);
+  top: 20px;
+  left:5px;
   background-image: url('./assets/images/lm-logo.png');
   background-size: 40px 40px;
 }
@@ -323,6 +322,154 @@ body {
 }
 .logut-link::before{
   background-image: url('./assets/images/logout-icon.png');
+}
+.plans-cont{
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+}
+.add-plan-btn{
+  display:block;
+  width:120px;
+  border-radius:5px;
+  padding: 10px 15px;
+  background-color: #ffdac2;
+  color: #a95800;
+  border: none;
+  outline: none;
+  letter-spacing: .5px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.AddPlan-cont{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  position:fixed;
+  background-color: #00000080;
+  top:0;
+  left:0;
+}
+.add-plan-box{
+  width:95%;
+  min-width:300px;
+  max-width:500px;
+  background-color: #fff;
+  padding:10px;
+  border-radius:10px;
+  text-align: center;
+  position: relative;
+}
+.add-plan-box h2{
+  padding:10px 10px 10px 50px;
+  font-size:22px;
+  color:#c26705;
+  font-weight: 500;
+  position:relative;
+  width: fit-content;
+  margin: 0px auto;
+}
+.add-plan-box h2::before{
+  content: "";
+  position: absolute;
+  width:  40px;
+  height: 40px;
+  background-image: url('./assets/images/plan-icon.png');
+  background-size: 40px 40px;
+  left: 0;
+  top:50%;
+  transform: translateY(-50%);
+}
+.add-plan-form ul{
+  text-align: left;
+  list-style: none;
+  display: flex; 
+  flex-direction: column;
+  padding:10px;
+  justify-content: space-around;
+}
+.add-plan-form ul li{
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  padding:5px;
+  margin: 5px 0;
+}
+.add-plan-form label{
+  font-size:18px;
+  padding:10px;
+  display: block;
+  width:180px;
+}
+.poup-input{
+  display: flex;
+  flex-direction: column;
+  width:calc(100% - 180px);
+  align-items: flex-start;
+  position: relative;
+}
+.poup-input .Err-field{
+  position:absolute;
+  font-size: 13px;
+  color:rgb(235, 0, 0);
+  white-space:nowrap;
+  font-weight: 600;
+  letter-spacing: .5px;
+  bottom:100%;
+}
+.add-plan-form ul li input,
+.add-plan-form ul li select{
+  height:28px;
+  padding:5px 10px;
+  width:100%;
+  max-width: 250px;
+  border-radius: 5px;
+  outline: none;
+  border:1.5px solid #9a9999;
+}
+.add-plan-form ul li select option{
+  padding:5px 10px;
+  height:20px;
+}
+.creat-plan-btn:disabled{
+  opacity: .6;
+}
+.creat-plan-btn{
+  width:150px;
+  padding:10px;
+  border-radius:5px;
+  background-color: #ffd9b0;
+  border: none;
+  outline: none;
+  margin:0px auto;
+  color:#925511;
+  font-size: 16px;
+  letter-spacing: .5px;
+  cursor: pointer;
+  font-weight: 500;
+  opacity: 1;
+}
+.close-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 16px;
+  width:25px;
+  height:25px;
+  border-radius: 50%;
+  bottom: calc(100% - 20px);
+  left: calc(100% - 20px);
+  color: #925511;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  cursor: pointer;
+}
+.creat-plan-btn:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 @media (max-width:768px) {
   .lm-head h1{
