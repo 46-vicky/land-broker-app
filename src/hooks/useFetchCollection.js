@@ -1,11 +1,11 @@
-import { collection, onSnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { addDoc, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { useState } from "react";
 
 export const useFetchCollection = ()=>{
-    //const [documents, setDocuments] = useState(null)
+    const [error,setError] = useState(null)
 
-    const makeRequest = (fbcollection, callbackFunction) => {
+    const fetchPlanList = (fbcollection, callbackFunction) => {
         let collectionRef = collection(db,fbcollection)
 
         onSnapshot(collectionRef, (snapshot) => {
@@ -15,12 +15,33 @@ export const useFetchCollection = ()=>{
             })
             callbackFunction(results)
         })
-
-        //return () => unsub();
     };
 
+   const createPlan = async (fbcollection, document,callbackFunction)=>{
+    
+    let collectionRef = collection(db,fbcollection)
+        try{
+            const doc = await addDoc(collectionRef,document)
+            callbackFunction(doc)
+        }catch (err){
+            setError(err.message)
+        }
+    
+   }
+
+   const deletePlanById = async (fbcollection,id,callbackFunction)=>{
+    const decumentRef = doc(db,fbcollection,id)
+
+    try{
+       const doc =  await deleteDoc(decumentRef)
+       callbackFunction(doc)
+    }catch(err){
+        setError(err.message)
+    }
+   }
+
     return {
-        makeRequest
+        fetchPlanList,createPlan,error,deletePlanById
     }
 }
  

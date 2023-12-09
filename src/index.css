@@ -461,15 +461,59 @@ body {
   width:25px;
   height:25px;
   border-radius: 50%;
-  bottom: calc(100% - 20px);
-  left: calc(100% - 20px);
+  top:20px;
+  right:20px;
   color: #925511;
   background-color: #ffff;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   cursor: pointer;
+}
+.close-btn:hover{
+  border:1px solid #b67020; 
 }
 .creat-plan-btn:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.plans-cont{
+  padding: 10px;
+  list-style: none;
+  
+}
+.plan-list,
+.plan-list-head
+{
+  margin:10px;
+  display: flex;
+  justify-content: space-around;
+  border:1px solid red;
+  padding: 10px;
+}
+.plan-list-head{
+  font-size: 22px;
+}
+.plan-list{
+  font-size: 18px;
+}
+.plan-list p{
+  width:calc((100% - 50px) / 2);
+}
+.plan-list .commision-val{
+  text-align: center;
+}
+.plan-list button{
+  width:25px;
+}
+.delete-plan{
+  width:25px;
+  height:25px;
+  background-color: red;
+}
+.successMsg{
+  font-size:16px;
+  margin:10px 0;
+  padding:10px;
+  background: linear-gradient(to right, #ffffff, #c0ffff,  #ffffff);
+  color:#1d9494;
+  cursor:pointer;
 }
 @media (max-width:768px) {
   .lm-head h1{

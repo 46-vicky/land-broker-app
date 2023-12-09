@@ -10,7 +10,7 @@ const planSlice = createSlice({
     initialState: initialPlanValues,
     reducers:{
         setAllPlans(state, action) {
-            console.log(action.payload);
+            console.log(action.payload.plans);
             state.allPlans = action.payload.plans
         },
         setFetchDone(state) {
@@ -19,7 +19,5 @@ const planSlice = createSlice({
     },
 })
 
-
+export const planActions = planSlice.actions;
 export default planSlice.reducer;
-
-export const planReducer = planSlice.actions;

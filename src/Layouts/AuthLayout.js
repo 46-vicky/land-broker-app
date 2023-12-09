@@ -2,11 +2,12 @@ import React from 'react'
 import { useFetchCollection } from '../hooks/useFetchCollection'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import planReducer from "../stores/planSlice";
+import { planActions } from '../stores/planSlice';
 
-const AuthLayout = () => {
+
+const AuthLayout = (props) => {
     
-    const { makeRequest } = useFetchCollection();
+    const { fetchPlanList } = useFetchCollection();
     const dispatch = useDispatch();
     const planFetch =  useSelector((state)=>state.plans.isFetchDone)
 
@@ -18,7 +19,7 @@ useEffect(()=>{
 
 const fetchPlans = ()=>{
 
-    makeRequest('plans', listPlan)
+    fetchPlanList('plans', listPlan)
 }
    const listPlan = (responseObj)=>{
     
@@ -32,12 +33,13 @@ const fetchPlans = ()=>{
             commisionValue: responseObj[planKey].commisionValue 
         });
     }
-    console.log(resultData)
-    dispatch(planReducer.setAllPlans({plans: resultData}));
-    dispatch(planReducer.setFetchDone());
+    dispatch(planActions.setAllPlans({plans: resultData}));
+    dispatch(planActions.setFetchDone());
    }
   return (
-    <div className='sec-partent-box'></div>
+    <div className='sec-partent-box'>
+        {props.children}
+    </div>
   )
 }
 

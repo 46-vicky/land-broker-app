@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useFetchCollection } from '../../hooks/useFetchCollection';
+import { useNavigate } from 'react-router';
 const planNameREGX = /^[A-z][A-z0-9-_ ]{3,23}$/;
 const commisionValueREGX = /^[0-9]+$/;
 
 const AddPlan = ({setOpenPoup}) => {
+    const navigate = useNavigate
     const planRef = useRef();
     const [planName,setPlanName] = useState("")
     const [isValidPlanName,setIsValidPlanName] = useState(true)
@@ -13,6 +16,9 @@ const AddPlan = ({setOpenPoup}) => {
     const [planValue,setPlanValue] = useState("")
     const [isValidPlanValue,setIsValidPlanValue] = useState(true)   
     const [planValueError,setPlanValueError] = useState("")
+    // const [isPlanAdded,setIsPlanAdded] = useState(false)
+    const {createPlan} = useFetchCollection()
+
     useEffect(()=>{
         planRef.current.focus()
     },[])
@@ -29,8 +35,6 @@ const AddPlan = ({setOpenPoup}) => {
         setIsValidPlanValue(commisionValueREGX.test(planValue))
         if(commisionValueREGX.test(planValue)){
             setPlanValueError("")
-        }else{
-
         }
     },[planValue])
 
@@ -51,15 +55,36 @@ const AddPlan = ({setOpenPoup}) => {
         setPlanValue(planValue.replace(/[^0-9]/g, ""));
     }
 
-    const createPlan = ()=>{
-
+    const createNewPlan = ()=>{
+            const newPlan = {
+                planName,
+                commisionType,
+                commisionValue:Number(planValue)
+            }
+            console.log(newPlan)
+            const ResultFun = (response)=>{
+                console.log(response)
+            }
+        if(newPlan){
+             createPlan('plans',newPlan,ResultFun)
+            //  setIsPlanAdded(true);
+             setPlanValueError("")
+             setIsValidPlanValue(false)
+             setPlanValue("")
+             SetPlanNameError("")
+             setIsValidPlanName(false)
+             setPlanName("")
+             setOpenPoup(false)
+        }
+        
     }
 
   return (
     <div className='AddPlan-cont'>
         <div className='add-plan-box'>
-            <h2>Add New Paln</h2>
+            <h2>Add New Plan</h2>
             <span className='close-btn' onClick={()=>setOpenPoup(false)}>&#x2716;</span>
+            {/* {isPlanAdded ? <p className='successMsg'>Plan Added Successfully!</p> : ""} */}
             <form className='add-plan-form' onSubmit={(e)=>e.preventDefault()}>
                 <ul>
                     <li>
@@ -108,7 +133,7 @@ const AddPlan = ({setOpenPoup}) => {
                         </div>                       
                     </li>
                 </ul>
-                <button type='button' className='creat-plan-btn' disabled={!isValidPlanName || !isValidPlanValue || planName === "" || planValue === "" ? true :false} onClick={(e)=>createPlan()}>Create Plan</button>
+                <button type='button' className='creat-plan-btn' disabled={!isValidPlanName || !isValidPlanValue || planName === "" || planValue === "" ? true :false} onClick={(e)=>createNewPlan()}>Create Plan</button>
             </form>
         </div>
     </div>
