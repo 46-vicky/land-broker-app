@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-<<<<<<< HEAD
 import { useFetchCollection } from '../../hooks/useFetchCollection'
 
 const PlansList = () => {
@@ -23,17 +22,6 @@ const PlansList = () => {
           <p className='plan-value-head'>Commision value</p>
         </li>
         {plansList}
-=======
-
-const PlansList = () => {
-
-  const allPlans = useSelector(state => state.plans.allPlans)
-
-  return (
-    <div>
-      <ul>
-        {allPlans.map((plan, index) => <li key={index}> {plan.planName} </li>)}
->>>>>>> 046b3ffae3acd4320d1106f4b6f884c727db143a
       </ul>
     </div>
   )
