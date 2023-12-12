@@ -3,26 +3,34 @@ import { useFetchCollection } from '../hooks/useFetchCollection'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { planActions } from '../stores/planSlice';
+import { employeeActions } from '../stores/employeeSlice';
 
 
 const AuthLayout = (props) => {
     
-    const { fetchPlanList } = useFetchCollection();
+    const { fetchData } = useFetchCollection();
     const dispatch = useDispatch();
     const planFetch =  useSelector((state)=>state.plans.isFetchDone)
+    const employeeFetch = useSelector((state)=>state.employees.isFetchDone)
+    console.log(employeeFetch)
 
 useEffect(()=>{
     if(!planFetch) {
         fetchPlans();
     }
+    if(!employeeFetch){
+        fetchEmployees()
+    }
 },[])
 
 const fetchPlans = ()=>{
-
-    fetchPlanList('plans', listPlan)
+    fetchData('plans', listPlan)
 }
-   const listPlan = (responseObj)=>{
-    
+
+const fetchEmployees = ()=>{
+    fetchData('employees',listEmployee)
+}
+   const listPlan = (responseObj)=>{   
     const resultData = [];
    
     for (const planKey in responseObj) {
@@ -35,6 +43,21 @@ const fetchPlans = ()=>{
     }
     dispatch(planActions.setAllPlans({plans: resultData}));
     dispatch(planActions.setFetchDone());
+   }
+
+   const listEmployee = (responseObj)=>{
+    const resultData = [];
+   
+    for (const employeeKey in responseObj) {
+        resultData.push({
+            id: responseObj[employeeKey].id,
+            employeeName: responseObj[employeeKey].employeeName, 
+            employeeMail: responseObj[employeeKey].employeeMail, 
+            assignedPlanId: responseObj[employeeKey].assignedPlanId 
+        });
+    }
+    dispatch(employeeActions.setAllEmployees({employees: resultData}));
+    dispatch(employeeActions.setFetchDone());
    }
   return (
     <div className='sec-partent-box'>

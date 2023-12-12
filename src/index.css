@@ -323,7 +323,7 @@ body {
 .logut-link::before{
   background-image: url('./assets/images/logout-icon.png');
 }
-.plans-cont{
+.list-cont{
   padding: 10px;
   display:flex;
   flex-direction: column;
@@ -438,7 +438,7 @@ body {
   opacity: .6;
 }
 .creat-plan-btn{
-  width:150px;
+  width:155px;
   padding:10px;
   border-radius:5px;
   background-color: #ffd9b0;
@@ -473,39 +473,75 @@ body {
 .creat-plan-btn:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.plans-cont{
-  padding: 10px;
+.list-cont{
   list-style: none;
-  
+  display: table;
+  min-width:350px;
+  width:90%;
+  box-sizing: border-box;
+}
+.list-cont tbody{
+  padding: 10px;
+}
+.plans-cont th.list-data{
+  width:45%;
+  border:1px solid blue;
+  text-align:left;
+}
+.employee-cont th.list-data{
+  width:30%;
+}
+.plans-cont .list{
+  width:100%;
 }
 .plan-list,
-.plan-list-head
+.list-head
 {
-  margin:10px;
-  display: flex;
-  justify-content: space-around;
   border:1px solid red;
   padding: 10px;
+  width: 100%;
 }
-.plan-list-head{
+.list-head{
+  display: table;
+  padding-right:50px;
   font-size: 22px;
+  text-align:left;
 }
 .plan-list{
   font-size: 18px;
 }
-.plan-list p{
-  width:calc((100% - 50px) / 2);
+.employee-list{
+  margin:10px 0;
+}
+.employee-list td{
+  width:calc(100% / 3);
+}
+.plan-list td{
+  width:calc(100% / 2);
+}
+.plan-list td:last-child{
+  width:50px;
 }
 .plan-list .commision-val{
   text-align: center;
 }
-.plan-list button{
-  width:25px;
-}
-.delete-plan{
+.delete-btn{
   width:25px;
   height:25px;
-  background-color: red;
+  position:relative;
+  background-color: unset;
+  border: none;
+  outline: none;
+}
+.delete-btn::before{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:25px;
+  background-image: url("./assets/images/delete-btn.png");
+  background-size: 25px 25px;
+  top:0;
+  left:0;
 }
 .successMsg{
   font-size:16px;
@@ -514,6 +550,9 @@ body {
   background: linear-gradient(to right, #ffffff, #c0ffff,  #ffffff);
   color:#1d9494;
   cursor:pointer;
+}
+.del-btn{
+  text-align:center;
 }
 @media (max-width:768px) {
   .lm-head h1{

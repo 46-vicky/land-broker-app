@@ -1,35 +1,47 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFetchCollection } from '../../hooks/useFetchCollection';
 import { useNavigate } from 'react-router';
-const planNameREGX = /^[A-z][A-z0-9-_ ]{3,23}$/;
+import { useSelector } from 'react-redux';
+const planNameREGX = /^[A-z][A-z0-9-_ ]{2,23}$/;
 const commisionValueREGX = /^[0-9]+$/;
 
 const AddPlan = ({setOpenPoup}) => {
     const navigate = useNavigate
     const planRef = useRef();
     const [planName,setPlanName] = useState("")
-    const [isValidPlanName,setIsValidPlanName] = useState(true)
+    const [isValidPlanName,setIsValidPlanName] = useState(false)
     const [planNameError,SetPlanNameError] = useState("")
 
     const [commisionType,setCommisionType] = useState("Amount")
 
     const [planValue,setPlanValue] = useState("")
-    const [isValidPlanValue,setIsValidPlanValue] = useState(true)   
+    const [isValidPlanValue,setIsValidPlanValue] = useState(false)   
     const [planValueError,setPlanValueError] = useState("")
-    // const [isPlanAdded,setIsPlanAdded] = useState(false)
-    const {createPlan} = useFetchCollection()
+    const {createData} = useFetchCollection()
 
+    const existplans = useSelector((state)=>state.plans.allPlans)
     useEffect(()=>{
         planRef.current.focus()
     },[])
     useEffect(()=>{
             setIsValidPlanName(planNameREGX.test(planName))
             if(planNameREGX.test(planName)){
-                SetPlanNameError("")
+                const planNameArr = [];
+                existplans.find((plan)=>{
+                    planNameArr.push(plan.planName)
+                })
+               if(planNameArr.includes(planName)){
+                    setIsValidPlanName(false)
+                    SetPlanNameError("*Plan Name Alredy Exist")
+               } else{
+                    setIsValidPlanName(true)
+                    SetPlanNameError("")
+               }
             }else if(planName !== "" && !planNameREGX.test(planName)){
                 SetPlanNameError("*Should be Minimum 3 Charcters")
-            }   
+            }
     },[planName])
+
 
     useEffect(()=>{
         setIsValidPlanValue(commisionValueREGX.test(planValue))
@@ -39,7 +51,7 @@ const AddPlan = ({setOpenPoup}) => {
     },[planValue])
 
 
-    const validatePlanName = (planName)=>{
+    const validatePlanName = (planName)=>{       
         if(planName.trim() === ""){
             SetPlanNameError("*Enter Plan Name")
             setIsValidPlanName(false)
@@ -61,20 +73,21 @@ const AddPlan = ({setOpenPoup}) => {
                 commisionType,
                 commisionValue:Number(planValue)
             }
-            console.log(newPlan)
             const ResultFun = (response)=>{
                 console.log(response)
             }
         if(newPlan){
-             createPlan('plans',newPlan,ResultFun)
-            //  setIsPlanAdded(true);
-             setPlanValueError("")
-             setIsValidPlanValue(false)
-             setPlanValue("")
-             SetPlanNameError("")
-             setIsValidPlanName(false)
-             setPlanName("")
-             setOpenPoup(false)
+             createData('plans',newPlan,ResultFun)
+            if(ResultFun){
+                setPlanValueError("")
+                setIsValidPlanValue(false)
+                setPlanValue("")
+                SetPlanNameError("")
+                setIsValidPlanName(false)
+                setPlanName("")
+                setOpenPoup(false)
+            }
+             
         }
         
     }

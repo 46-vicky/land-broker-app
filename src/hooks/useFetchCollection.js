@@ -5,7 +5,7 @@ import { useState } from "react";
 export const useFetchCollection = ()=>{
     const [error,setError] = useState(null)
 
-    const fetchPlanList = (fbcollection, callbackFunction) => {
+    const fetchData = (fbcollection, callbackFunction) => {
         let collectionRef = collection(db,fbcollection)
 
         onSnapshot(collectionRef, (snapshot) => {
@@ -17,7 +17,7 @@ export const useFetchCollection = ()=>{
         })
     };
 
-   const createPlan = async (fbcollection, document,callbackFunction)=>{
+   const createData = async (fbcollection, document,callbackFunction)=>{
     
     let collectionRef = collection(db,fbcollection)
         try{
@@ -29,7 +29,7 @@ export const useFetchCollection = ()=>{
     
    }
 
-   const deletePlanById = async (fbcollection,id,callbackFunction)=>{
+   const deleteDataById= async (fbcollection,id,callbackFunction)=>{
     const decumentRef = doc(db,fbcollection,id)
 
     try{
@@ -41,7 +41,7 @@ export const useFetchCollection = ()=>{
    }
 
     return {
-        fetchPlanList,createPlan,error,deletePlanById
+        fetchData,createData,error,deleteDataById
     }
 }
  
