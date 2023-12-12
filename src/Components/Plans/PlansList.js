@@ -23,8 +23,12 @@ const PlansList = () => {
           <th className='list-data' aria-colspan={3}>Commision value</th>
         </tr>
         {plansList}
+<<<<<<< HEAD
         </tbody>
       </table>
+=======
+      </ul>
+>>>>>>> 7ebe6d333894f13e4ea39b69fdae37555b9e05c8
     </div>
   )
 }
