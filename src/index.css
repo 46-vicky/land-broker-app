@@ -323,14 +323,9 @@ body {
 .logut-link::before{
   background-image: url('./assets/images/logout-icon.png');
 }
-.list-cont{
-  padding: 10px;
-  display:flex;
-  flex-direction: column;
-}
 .add-plan-btn{
   display:block;
-  width:120px;
+  width:135px;
   border-radius:5px;
   padding: 10px 15px;
   background-color: #ffdac2;
@@ -352,7 +347,9 @@ body {
   background-color: #00000080;
   top:0;
   left:0;
+  z-index: 1;
 }
+.employee-plan-box,
 .add-plan-box{
   width:95%;
   min-width:300px;
@@ -363,6 +360,7 @@ body {
   text-align: center;
   position: relative;
 }
+.employee-plan-box h2,
 .add-plan-box h2{
   padding:10px 10px 10px 50px;
   font-size:22px;
@@ -372,16 +370,22 @@ body {
   width: fit-content;
   margin: 0px auto;
 }
+.employee-plan-box h2::before,
 .add-plan-box h2::before{
   content: "";
   position: absolute;
   width:  40px;
   height: 40px;
-  background-image: url('./assets/images/plan-icon.png');
   background-size: 40px 40px;
   left: 0;
   top:50%;
   transform: translateY(-50%);
+}
+.add-plan-box h2::before{
+  background-image: url('./assets/images/plan-icon.png');
+}
+.employee-plan-box h2::before{
+  background-image: url('./assets/images/employee-icon.png');
 }
 .add-plan-form ul{
   text-align: left;
@@ -473,23 +477,26 @@ body {
 .creat-plan-btn:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+.plans-cont,
 .list-cont{
   list-style: none;
   display: table;
   min-width:350px;
   width:90%;
+  padding:10px;
   box-sizing: border-box;
 }
+
 .list-cont tbody{
   padding: 10px;
 }
 .plans-cont th.list-data{
   width:45%;
-  border:1px solid blue;
   text-align:left;
 }
 .employee-cont th.list-data{
   width:30%;
+  text-align: left;
 }
 .plans-cont .list{
   width:100%;
@@ -498,14 +505,19 @@ body {
 .list-head
 {
   border:1px solid red;
-  padding: 10px;
   width: 100%;
 }
 .list-head{
-  display: table;
+  width:100%;
   padding-right:50px;
-  font-size: 22px;
+  font-size: 20px;
   text-align:left;
+  background-color: #fef1e4;
+  
+}
+.list-head th{
+  padding: 10px;
+  color: #c26705;
 }
 .plan-list{
   font-size: 18px;
@@ -515,15 +527,18 @@ body {
 }
 .employee-list td{
   width:calc(100% / 3);
+  font-size: 18px;
+  padding: 10px;
 }
 .plan-list td{
   width:calc(100% / 2);
+  padding: 10px;
 }
 .plan-list td:last-child{
   width:50px;
 }
 .plan-list .commision-val{
-  text-align: center;
+  text-align: left;
 }
 .delete-btn{
   width:25px;

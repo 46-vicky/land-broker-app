@@ -19,18 +19,20 @@ const EmployeeList = () => {
          assignedPlan = plan.planName
       }
     })
-    return (<tr key={index} className='employee-list' aria-colspan={12}><td className='plan-name' aria-colspan={4}>{index+1}. {employee.employeeName}</td><td className='commision-val' aria-colspan={4}>{employee.employeeMail}</td><td className='commision-val' aria-colspan={4}>{assignedPlan}</td><td aria-colspan={2} className="del-btn"><button className='delete-btn' aria-label='delete-btn' onClick={()=>deleteEmployee(employee.id)}></button></td></tr>)
+    return (<tr key={index} className='employee-list' aria-colspan={12}><td className='plan-name list-data ' aria-colspan={4}>{index+1}. {employee.employeeName}</td><td className='commision-val list-data ' aria-colspan={4}>{employee.employeeMail}</td><td className='list-data' aria-colspan={4}>{assignedPlan}</td><td aria-colspan={2} className="del-btn"><button className='delete-btn' aria-label='delete-btn' onClick={()=>deleteEmployee(employee.id)}></button></td></tr>)
   })
   
   return (
     <div>
       <table className='list-cont employees-cont' aria-colspan={14}>
+        <thead>
+          <tr className='list-head' aria-colspan={12}>
+            <th className='list-data' aria-colspan={4}>Employee Name</th>
+            <th className='list-data' aria-colspan={4}>Employee Mail</th>
+            <th className='list-data' aria-colspan={4}>Assigned Plan</th>
+          </tr>
+        </thead>
         <tbody>
-        <tr className='list-head' aria-colspan={12}>
-          <th className='list-' aria-colspan={4}>Employee Name</th>
-          <th className='plan-value-head' aria-colspan={4}>Employee Mail</th>
-          <th className='plan-value-head' aria-colspan={4}>Assigned Plan</th>
-        </tr>
         {plansList}
         </tbody>
       </table>

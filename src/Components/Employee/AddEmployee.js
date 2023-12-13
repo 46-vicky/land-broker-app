@@ -98,7 +98,7 @@ const AddEmployee = ({setOpenPoup}) => {
 
   return (
     <div className='AddPlan-cont'>
-        <div className='add-plan-box'>
+        <div className='employee-plan-box'>
             <h2>Add New Employeee</h2>
             <span className='close-btn' onClick={()=>setOpenPoup(false)}>&#x2716;</span>
             {/* {isPlanAdded ? <p className='successMsg'>Plan Added Successfully!</p> : ""} */}

@@ -8,13 +8,13 @@ const Employee = () => {
 
   return (
     <AuthLayout>
-      <div className="plans-cont">
+      <div className="list-cont">
           <button
             type='button'
             onClick={()=>setOpenPoup(true)}
             className='add-plan-btn'
           >
-              AddEmployee
+              Add Employee
           </button>     
     <div>
         {openPopup &&(
