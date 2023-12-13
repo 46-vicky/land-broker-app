@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { authReducer } from '../stores/authSlice';
 
 const Nav = ({isLogin}) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const logoutUser = ()=>{
     dispatch(authReducer.logoutUser())
+    navigate("/login")
   }
   return (
     <div className='auth-part'>
