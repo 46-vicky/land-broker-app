@@ -21,6 +21,7 @@ const PlansList = () => {
           <tr className='list-head' aria-colspan={8}>
             <th className='list-data' aria-colspan={3}>Plan Name</th>
             <th className='list-data' aria-colspan={3}>Commision value</th>
+            <th className='list-data' aria-colspan={2}>Delete</th>
           </tr>
         </thead>
         <tbody>

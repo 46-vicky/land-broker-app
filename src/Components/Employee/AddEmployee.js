@@ -98,14 +98,14 @@ const AddEmployee = ({setOpenPoup}) => {
 
   return (
     <div className='AddPlan-cont'>
-        <div className='employee-plan-box'>
+        <div className='add-employee-box'>
             <h2>Add New Employeee</h2>
             <span className='close-btn' onClick={()=>setOpenPoup(false)}>&#x2716;</span>
             {/* {isPlanAdded ? <p className='successMsg'>Plan Added Successfully!</p> : ""} */}
             <form className='add-plan-form' onSubmit={(e)=>e.preventDefault()}>
                 <ul>
                     <li>
-                        <label htmlFor='employee-name'>Employee Name :</label>
+                        <label htmlFor='employee-name'>Employee Name</label>
                         <div className='poup-input'>
                             {isValidEmployeeName === false  ? <p className="Err-field">{employeeNameError}</p>:""}
                             <input
@@ -120,7 +120,7 @@ const AddEmployee = ({setOpenPoup}) => {
                     </li>
                     <li>
                         <label htmlFor='emailValue'>
-                            Email :
+                            Email
                         </label>
                         <div className='poup-input'>
                             {isValidEmailValue === false  ? <p className="Err-field">{emailValueError}</p>:""}
@@ -133,7 +133,7 @@ const AddEmployee = ({setOpenPoup}) => {
                         </div>                       
                     </li>
                     <li>
-                        <label htmlFor='commision-typ'>Assigned Plan :</label>
+                        <label htmlFor='commision-typ'>Assigned Plan</label>
                         <div className='poup-input'>
                              {validAssignedPlan === false  ? <p className="Err-field">{assignedPlanErr}</p>:""}
                             <select 

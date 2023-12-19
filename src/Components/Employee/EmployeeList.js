@@ -27,9 +27,10 @@ const EmployeeList = () => {
       <table className='list-cont employees-cont' aria-colspan={14}>
         <thead>
           <tr className='list-head' aria-colspan={12}>
-            <th className='list-data' aria-colspan={4}>Employee Name</th>
-            <th className='list-data' aria-colspan={4}>Employee Mail</th>
-            <th className='list-data' aria-colspan={4}>Assigned Plan</th>
+            <th className='list-data' aria-colspan={3}>Employee Name</th>
+            <th className='list-data' aria-colspan={3}>Employee Mail</th>
+            <th className='list-data' aria-colspan={3}>Assigned Plan</th>
+            <th className='list-data' aria-colspan={3}>Delete</th>
           </tr>
         </thead>
         <tbody>

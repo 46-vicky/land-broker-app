@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { planActions } from '../stores/planSlice';
 import { employeeActions } from '../stores/employeeSlice';
+import { flatAction } from '../stores/flatSlice';
 
 
 const AuthLayout = (props) => {
@@ -12,7 +13,7 @@ const AuthLayout = (props) => {
     const dispatch = useDispatch();
     const planFetch =  useSelector((state)=>state.plans.isFetchDone)
     const employeeFetch = useSelector((state)=>state.employees.isFetchDone)
-    console.log(employeeFetch)
+    const flatFetch = useSelector((state)=>state.flats.isFetchDone)
 
 useEffect(()=>{
     if(!planFetch) {
@@ -20,6 +21,9 @@ useEffect(()=>{
     }
     if(!employeeFetch){
         fetchEmployees()
+    }
+    if(!flatFetch){
+        fetchFlats()
     }
 },[])
 
@@ -29,6 +33,10 @@ const fetchPlans = ()=>{
 
 const fetchEmployees = ()=>{
     fetchData('employees',listEmployee)
+}
+
+const fetchFlats = ()=>{
+    fetchData('flats',listFlat)
 }
    const listPlan = (responseObj)=>{   
     const resultData = [];
@@ -58,6 +66,25 @@ const fetchEmployees = ()=>{
     }
     dispatch(employeeActions.setAllEmployees({employees: resultData}));
     dispatch(employeeActions.setFetchDone());
+   }
+
+   const listFlat = (responseObj)=>{
+        const resultData = [];
+        for(const flatKey in responseObj){
+            resultData.push({
+                id: responseObj[flatKey].id,
+                ownerName: responseObj[flatKey].ownerName,
+                flatType: responseObj[flatKey].flatType,
+                area: responseObj[flatKey].area,
+                amount: responseObj[flatKey].amount,
+                discount: responseObj[flatKey].discount,
+                imageUrl: responseObj[flatKey].imageUrl,
+                features: responseObj[flatKey].features,
+
+        });  
+        }
+        dispatch(flatAction.setAllFlats({flats:resultData}));
+        dispatch(flatAction.setFetchDone());
    }
   return (
     <div className='sec-partent-box'>

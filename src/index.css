@@ -349,8 +349,9 @@ body {
   left:0;
   z-index: 1;
 }
-.employee-plan-box,
-.add-plan-box{
+.add-employee-box,
+.add-plan-box,
+.add-flat-box{
   width:95%;
   min-width:300px;
   max-width:500px;
@@ -360,8 +361,9 @@ body {
   text-align: center;
   position: relative;
 }
-.employee-plan-box h2,
-.add-plan-box h2{
+.add-employee-box h2,
+.add-plan-box h2,
+.add-flat-box h2{
   padding:10px 10px 10px 50px;
   font-size:22px;
   color:#c26705;
@@ -370,8 +372,9 @@ body {
   width: fit-content;
   margin: 0px auto;
 }
-.employee-plan-box h2::before,
-.add-plan-box h2::before{
+.add-employee-box h2::before,
+.add-plan-box h2::before,
+.add-flat-box h2::before{
   content: "";
   position: absolute;
   width:  40px;
@@ -384,8 +387,11 @@ body {
 .add-plan-box h2::before{
   background-image: url('./assets/images/plan-icon.png');
 }
-.employee-plan-box h2::before{
+.add-employee-box h2::before{
   background-image: url('./assets/images/employee-icon.png');
+}
+.add-flat-box h2::before{
+  background-image: url('./assets/images/flat-icon.png');
 }
 .add-plan-form ul{
   text-align: left;
@@ -397,7 +403,6 @@ body {
 }
 .add-plan-form ul li{
   display: flex; 
-  justify-content: space-between;
   align-items: center;
   padding:5px;
   margin: 5px 0;
@@ -415,6 +420,7 @@ body {
   align-items: flex-start;
   position: relative;
 }
+.feature-cnt .Err-field,
 .poup-input .Err-field{
   position:absolute;
   font-size: 13px;
@@ -455,6 +461,9 @@ body {
   cursor: pointer;
   font-weight: 500;
   opacity: 1;
+}
+select option{
+  padding:10px;
 }
 .close-btn{
   display: flex;
@@ -567,6 +576,85 @@ body {
 }
 .del-btn{
   text-align:center;
+}
+.feature-part{
+  display: flex;
+  flex-direction: column;
+}
+.feature-box{
+  width:250px;
+  display: flex;
+}
+.feature-input-part{
+  width: 100%;
+  display: flex;
+}
+.feature-part label{
+  position:relative;
+  top:-10px;
+}
+.feature-cnt{
+  position: relative;
+}
+.feature-box input{
+  padding: 5px 28px 5px 10px !important;
+}
+.feature-box button{
+  width: 25px;
+  height: 25px;
+  border-radius: 0 5px 5px 0;
+  position: absolute;
+  border:none;
+  outline: none;
+  background: #ffe6c9;
+  color: #a95800;
+  top:1px;
+  right:1px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.feature-box button:hover{
+  background: #e09f56;
+  color: #ffff;
+}
+.fetaurs-Cont{
+  width:100%;
+  padding: 5px !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap;
+  max-height: 125px;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+.fetaurs-Cont:has(li){
+  border:1px dashed #925511;
+}
+.fetaurs-Cont li{
+  font-size: 14px;
+  margin: 5px 4px !important;
+  padding: 4px 35px 4px 8px !important;
+  background-color: #fff;
+  border-radius:10px;
+  width: fit-content;
+  background:linear-gradient(to right bottom, #ffe6c9, #ffe4c5, #ffe2c0, #ffe0bc, #ffdeb8, #ffdeb8, #ffdeb8, #ffdeb8, #ffe0bc, #ffe2c0, #ffe4c5, #ffe6c9);
+  white-space: nowrap;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  position: relative;
+}
+.feature-tag button{
+  position: absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  right:5px;
+  border: none;
+  outline: none;
+  background-image: url('./assets/images/cross-icon.png');
+  background-size: 18px 18px;
+  background-color: #fff;
+  cursor: pointer;
 }
 @media (max-width:768px) {
   .lm-head h1{
