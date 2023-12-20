@@ -5,7 +5,7 @@ const FlatsList = () => {
   const allFlats = useSelector(state => state.flats.allFlats)
   
   const flatCard = allFlats.map((flat)=>{
-    let imageSrc = require(`../../assets/images/${flat.imageUrl}.jpg`);
+    let imageSrc = flat.imageUrl ? require(`../../assets/images/${flat.imageUrl}.jpg`) : '';
     console.log(imageSrc);
   <div className='flat-card' key={flat.id}>
     <div className='flat-preview'>
