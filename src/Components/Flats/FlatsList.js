@@ -4,7 +4,14 @@ import { useSelector } from 'react-redux'
 
 const FlatsList = () => {
   const allFlats = useSelector(state => state.flats.allFlats)
+<<<<<<< HEAD
   const flatCard = allFlats.map((flat)=>(
+=======
+  
+  const flatCard = allFlats.map((flat)=>{
+    let imageSrc = flat.imageUrl ? require(`../../assets/images/${flat.imageUrl}.jpg`) : '';
+    console.log(imageSrc);
+>>>>>>> f804fe3a20c79cc514df3beadffd884c7ac583ea
   <div className='flat-card' key={flat.id}>
     <div className='flat-preview'>
       <img src={flat.imageUrl ? require(`../../assets/images/${flat.imageUrl}.jpg`) : ""} alt='image=preview'/>
