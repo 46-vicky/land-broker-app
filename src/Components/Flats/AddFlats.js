@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useFetchCollection } from '../../hooks/useFetchCollection';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
+import { RxCrossCircled } from "react-icons/rx";
 
 const ownerNameREGX = /^[a-zA-Z][a-zA-Z]{2,23}$/;
 const areaNameREGX = /^[a-zA-Z][a-zA-Z]{2,23}$/;
-const imageUrlREGX = /^[a-z0-9]{2,23}.*\.jpg$/;
+const imageUrlREGX = /^[a-z0-9]{2,23}$/;
 
 const AddFlats = ({setOpenPoup}) => {
     const navigate = useNavigate()
@@ -295,7 +296,7 @@ const AddFlats = ({setOpenPoup}) => {
                             </div>    
                             <ul className='fetaurs-Cont'>
                                 {featuresArr.map((feature, index) => (
-                                    <li className='feature-tag' key={index}>{feature}<button aria-label='remove-tag' onClick={()=>removeTag(feature)}></button></li>
+                                    <li className='feature-tag' key={index}>{feature}<button aria-label='remove-tag' onClick={()=>removeTag(feature)}><RxCrossCircled /></button></li>
                                 ))}
                             </ul>
                                                

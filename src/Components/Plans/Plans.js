@@ -14,7 +14,7 @@ const Plans = () => {
             onClick={()=>setOpenPoup(true)}
             className='add-plan-btn'
           >
-              AddPlan
+              Add Plan
           </button>     
     <div>
         {openPopup &&(

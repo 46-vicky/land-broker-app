@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loggedUserDetail } from '../stores/authSlice'
 import { useNavigate } from 'react-router'
+import { FaRegUser } from "react-icons/fa";
 
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
   return (
     <div className='lm-head'>
         <h1>Land Masters</h1>
-        {isLogin ? <p className='u-name'>{isLoginDetail.userName}</p>: ""}
+        {isLogin ? <p className='u-name'><span><FaRegUser /></span>{isLoginDetail.userName}</p>: ""}
         <div className='action-box'>
           <Menubar/>
           <Nav 

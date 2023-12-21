@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { authReducer } from '../stores/authSlice';
+import { IoMdLogOut } from "react-icons/io";
 
 const Nav = ({isLogin}) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Nav = ({isLogin}) => {
   }
   return (
     <div className='auth-part'>
-      {isLogin ? <p onClick={()=>logoutUser()} className='logut-link'>Logout</p> : <p><Link to="login">Login</Link></p>}
+      {isLogin ? <p onClick={()=>logoutUser()} className='logut-link'><span><IoMdLogOut /></span>Logout</p> : <p><Link to="login">Login</Link></p>}
     </div>
   )
 }
