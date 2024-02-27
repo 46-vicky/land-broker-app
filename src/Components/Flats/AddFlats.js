@@ -95,7 +95,7 @@ const AddFlats = ({setOpenPoup}) => {
     }
 
     const validateAmount = (amount)=>{
-        if(amount.trim() == ""){
+        if(amount.trim() === ""){
             setAmountErr("*Enter Amount")
             setIsValidAmount(false)
             setAmount("")
@@ -106,7 +106,7 @@ const AddFlats = ({setOpenPoup}) => {
     }
 
     const validateDiscount = (discount)=>{
-        if(discount.trim()==""){
+        if(discount.trim()=== ""){
             setDiscountErr("*Enter Discount")
             setIsValidDiscount(false)
             setDiscount("")
@@ -119,7 +119,7 @@ const AddFlats = ({setOpenPoup}) => {
 
     const validateImageUrl = (value)=>{
         console.log(value)
-        if(value.trim()==""){
+        if(value.trim() === ""){
             setImageErr("")
             setIsValidImage(false)
             setImageUrl("")
@@ -128,7 +128,7 @@ const AddFlats = ({setOpenPoup}) => {
     }
 
     const validateFeatures = (feature)=>{
-        if(feature.trim()==""){
+        if(feature.trim() === ""){
             setFeatureErr("*Enter Features")
             setIsValidFeature(false)
             setFeature("")
@@ -151,7 +151,7 @@ const AddFlats = ({setOpenPoup}) => {
     const removeTag = (value)=>{
         const featuresVal = featuresArr.filter((feature)=>feature !== value);
         setFeatureArr(featuresVal)
-        if(featuresVal.length == 0){           
+        if(featuresVal.length === 0){           
             setFeatureErr("*Enter Features")
             setIsValidFeature(false)
         }

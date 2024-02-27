@@ -14,6 +14,14 @@ const planSlice = createSlice({
         },
         setFetchDone(state) {
             state.isFetchDone = true;
+        },
+        editPlan(state,action){
+            return{
+                ...state,
+                allPlans: state.allPlans.map((plan)=>(
+                    plan.id === action.payload.id ? {...plan, ...action.payload } : plan),
+                )
+            }
         }
     },
 })

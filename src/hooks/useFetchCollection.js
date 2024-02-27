@@ -41,7 +41,6 @@ export const useFetchCollection = ()=>{
    }
 
    const updateData = async (fbcollection,document,callbackFunction)=>{
-    console.log(document);
     const decumentRef = doc(db,fbcollection,document.id)
         try{
             const doc =  await updateDoc(decumentRef,document)

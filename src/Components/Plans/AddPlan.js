@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFetchCollection } from '../../hooks/useFetchCollection';
-import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 const planNameREGX = /^[A-z][A-z0-9-_ ]{2,23}$/;
 const commisionValueREGX = /^[0-9]+$/;
 
 const AddPlan = ({setOpenPoup}) => {
-    const navigate = useNavigate
     const planRef = useRef();
     const [planName,setPlanName] = useState("")
     const [isValidPlanName,setIsValidPlanName] = useState(false)

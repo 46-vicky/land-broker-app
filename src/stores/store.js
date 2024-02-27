@@ -12,4 +12,3 @@ export const store = configureStore({
         flats:flatReducer,
     },
 })
-export default store;

@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFetchCollection } from '../../hooks/useFetchCollection';
 import { useSelector,useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router';
 import { employeeActions } from '../../stores/employeeSlice';
 const employeeNameREGX = /^[A-z][A-z0-9-_ ]{2,23}$/;
 const emailValueREGX =  /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
 
 const EditEmployee = ({editableEmployeeId,setOpenEditEmployeePopup}) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   let currentEmployeeObj;
   const employeeRef = useRef();

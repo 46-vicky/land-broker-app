@@ -15,7 +15,7 @@ const Header = () => {
     if(!isLogin){
       navigate("/login")  
     }
-  },[])
+  })
 
   return (
     <div className='lm-head'>
