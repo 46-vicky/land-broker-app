@@ -303,6 +303,8 @@ color:var(--text_white);
   position: relative;
 }
 .menu-bar ul li span{
+  position:relative;
+  top:2px;
   font-size: 18px;
   margin-right: 10px;
 }
@@ -334,9 +336,11 @@ color:var(--text_white);
   font-size: 18px;
   display: block;
 }
+.menu-bar ul li.active,
 .menu-bar ul li:hover{
   background-color: var(--lite_grey);
 }
+.menu-bar ul li.active a,
 .menu-bar ul li:hover a{
   color:var(--blue1_background);
 }
@@ -539,6 +543,19 @@ select option{
 .creat-plan-btn:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+.list-head{
+  padding:5px 5px 5px 40px;
+  color:var(--blue1_background);
+  text-shadow: 2px 1px 4px #d4d4d4;
+  position: relative;
+  margin:0 20px;
+}
+.list-head span{
+  position:absolute;
+  top:7px;
+  left:10px;
+  font-size: 26px;
+}
 .table-part::-webkit-scrollbar {
   display: none;
 }
@@ -546,27 +563,39 @@ select option{
   overflow-x: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none; 
+  margin:10px;
 }
+/*table{
+  background: rgba(209, 230, 255, 0.91);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(209, 230, 255, 0.3);
+}*/
 table,td,th {
   border-collapse: separate;
   border-spacing: 0 15px;
+}
+table,th{
+  padding:0 20px;
+}
+td{
+  max-width: fit-content;
   padding:15px 20px;
 }
-table th:not(:last-child),
-table td:not(:last-child){
-  min-width: 300px;
-}
-table th:last-child,
-table td:last-child{
-  width:50px;
-}
+
 thead th{
   position:sticky;
   top:0;
-  left:0;
   text-align: left;
   color:var(--table_title_clr);
   font-size:20px;
+  width:fit-content;
+  white-space: nowrap;
+}
+td:not(:first-child){
+  text-align: center;
 }
 tbody tr{
   font-size: 18px;
@@ -575,10 +604,17 @@ tbody tr{
 tbody tr:nth-child(odd){
   border-radius: 5px;
   background-color: #ffffff;
+  border-radius: 5px;
 }
 tbody tr:hover{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background: rgba(209, 230, 255, 0.91);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(209, 230, 255, 0.3);
 }
+.edit-btn,
 .delete-btn{
   width:25px;
   height:25px;
@@ -684,11 +720,7 @@ tbody tr:hover{
   margin:10px;
   padding: 10px;
 }
-.flat-part-cont h2{
-  padding:5px 20px;
-  color:var(--blue1_background);
-  text-shadow: 2px 1px 4px #d4d4d4;
-}
+
 .flat-cont{
   padding:10px 5px;
   display:flex;

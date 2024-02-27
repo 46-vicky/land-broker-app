@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCGED3m9uxniSr2wtivNSNH4nF79OiXhLc",
-    authDomain: "land-masters.firebaseapp.com",
-    projectId: "land-masters",
-    storageBucket: "land-masters.appspot.com",
-    messagingSenderId: "724675451669",
-    appId: "1:724675451669:web:ffaf26a9dc76277db8271c"
-  };
+  apiKey: "AIzaSyBFHOTdIM36-hjCElIBZcymlITRVwtDwrk",
+  authDomain: "land-project-57455.firebaseapp.com",
+  projectId: "land-project-57455",
+  storageBucket: "land-project-57455.appspot.com",
+  messagingSenderId: "458972518166",
+  appId: "1:458972518166:web:49ebcec9120bafab7d6237"
+};
 
   initializeApp(firebaseConfig)
 

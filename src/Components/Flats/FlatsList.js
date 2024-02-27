@@ -1,17 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { IoList } from "react-icons/io5";
 
 
 const FlatsList = () => {
   const allFlats = useSelector(state => state.flats.allFlats)
-<<<<<<< HEAD
   const flatCard = allFlats.map((flat)=>(
-=======
-  
-  const flatCard = allFlats.map((flat)=>{
-    let imageSrc = flat.imageUrl ? require(`../../assets/images/${flat.imageUrl}.jpg`) : '';
-    console.log(imageSrc);
->>>>>>> f804fe3a20c79cc514df3beadffd884c7ac583ea
   <div className='flat-card' key={flat.id}>
     <div className='flat-preview'>
       <img src={flat.imageUrl ? require(`../../assets/images/${flat.imageUrl}.jpg`) : ""} alt='image=preview'/>
@@ -31,11 +25,9 @@ const FlatsList = () => {
       
     </div>
   </div>))
-  console.log(flatCard)
   return (
     <div className='flat-part-cont'>
-      {allFlats && <h2>Available Flats</h2>}
-      <div className='flat-cont'>{flatCard}</div>
+     {(allFlats.length) ? (<><h2 className='list-head'><span><IoList /></span>Available Flats</h2><div className='flat-cont'>{flatCard}</div></>) : (<h2>No Result</h2>)}
     </div>
     
   )

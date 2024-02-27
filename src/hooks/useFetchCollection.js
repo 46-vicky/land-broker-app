@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useState } from "react";
 
@@ -40,8 +40,19 @@ export const useFetchCollection = ()=>{
     }
    }
 
+   const updateData = async (fbcollection,document,callbackFunction)=>{
+    console.log(document);
+    const decumentRef = doc(db,fbcollection,document.id)
+        try{
+            const doc =  await updateDoc(decumentRef,document)
+            callbackFunction(doc)
+        }catch(err){
+            setError(err.message)
+        }
+   }
+
     return {
-        fetchData,createData,error,deleteDataById
+        fetchData,createData,error,deleteDataById,updateData
     }
 }
  

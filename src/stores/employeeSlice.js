@@ -14,9 +14,16 @@ const employeeSlice = createSlice({
         },
         setFetchDone(state) {
             state.isFetchDone = true;
+        },
+        editEmployee(state, action){
+            return {
+                ...state,
+                allEmployees :state.allEmployees.map((employee)=>
+                     employee.id === action.payload.id? {...employee, ...action.payload } : employee),
+                }
+            }  
         }
-    }
-})
+    })
 
 export const employeeActions = employeeSlice.actions;
 export default employeeSlice.reducer;
